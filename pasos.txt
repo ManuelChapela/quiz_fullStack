@@ -1,0 +1,47 @@
+-------------- Step 1 --------------
+Create fonders -> Autentication
+                    -> models
+                        - Users.js [definición de Schema de construcción]
+                    -> config
+                        - db.js [conexión con la base de datos]
+                    -> routes
+                        - users.js [endpoints CRUD]
+
+
+-------------- STEP 2 --------------
+Create DB in MongoDB (autentication/users)
+
+
+-------------- STEP 3 --------------
+npm init -y
+npm i express / nodemon / mongoose / dotenv / md5 / jwt-encode / jwd-decode
+
+
+-------------- Apuntes sobre deconstructor --------------
+const dbmanager = {
+
+    meter: function(doc){
+        // insert doc en la MongoDB
+    },
+
+    sacar: function(){
+        // devolver doc de la MongoDB
+        // return
+    }
+}
+module.exports = dbmanager
+
+const { meter, sacar } = require('./db.js)
+
+
+-------------- STEP 4 --------------
+db.js [es la conexión con nuestra base de datos]
+----> create require('')
+----> create urlDatabase y mongoOptions
+----> mongoose.conect(urlDatabase, mongoOptions)
+
+-------------- STEP 5 --------------
+Definir el Schema en models/users -->
+
+-------------- STEP 6 --------------
+Definir el main.js en la carpeta principal antes de src

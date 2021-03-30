@@ -1,0 +1,468 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------- ESTILOS DE INDEX.HTML -- PAGINA DE INICIO ------------------------------------ */ 
+
+
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    background-color: rgb(238, 238, 238) ;
+   
+    /* background-image: url("https://www.lafallera.es/wp-content/uploads/2020/02/K2F1902paella-valenciana1.jpg");
+    background-size: cover;*/
+}
+
+
+
+
+.upContainer {
+    display: flex;
+    flex-direction: column;
+    /* border: solid 3px red; */
+    margin: 140px 60px 60px 68px;
+}
+
+.downContainer {
+    /* margin-top: 60px; */
+    padding: 10px;
+    border-radius: 3px;
+    border: solid 1px rgb(42, 42, 42);;
+    width: 150px;
+    font-family: 'Chelsea Market', cursive;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 220px; */
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 300px;
+
+}
+
+
+.downContainer:hover {
+    background-color: rgb(179, 179, 179);
+    border: solid 2px rgb(42, 42, 42);;
+
+}
+
+/* HACER UNA TRANSICIÓN AQUÍ PARA QUE SE DESPLIEGUE LATERALMENTE */
+
+
+.indexTitle {
+    font-size: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Chelsea Market', cursive;
+    /* border: solid 2px blue; */
+}
+
+
+.indexText {
+    font-size: 20px;
+    margin-top: 20px;
+    color: rgb(42, 42, 42);
+    font-family: 'Love Ya Like A Sister', cursive;
+    /* border: solid 2px blue */
+}
+
+
+
+
+/* ----------------------------------- ESTILOS DE QUIZ.HTML -- PAGINA DE INICIO ------------------------------------ */ 
+
+.formContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.classPregunta {
+    margin: 10px;
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-family: 'Chelsea Market', cursive;
+    text-align: center;
+
+
+}
+
+.respuestasLabel {
+    margin: 10px;
+    background-color: rgba(212, 212, 212, 0.472);
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 3px;
+    border: solid 1px rgb(42, 42, 42);;
+    font-family: 'Chelsea Market', cursive;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.respuestasInput {
+     display: none; 
+}
+
+.respuestasInputCorrecta {
+    text-align: center;
+    margin: 10px;
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgba(0, 128, 0, 0.534);
+    border: solid 1px rgb(42, 42, 42);;
+    font-family: 'Chelsea Market', cursive;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.respuestasInputIncorrecta, .btnFinal{
+    text-align: center;
+    margin: 10px;
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgba(128, 0, 0, 0.534);
+    border: solid 1px rgb(42, 42, 42);;
+    font-family: 'Chelsea Market', cursive;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContainerQuiz {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center; 
+    align-items: center; 
+    /* margin-top: 4em; */
+     height: 100vh;
+
+}
+
+
+.puntuacionFinal {
+    font-family: 'Chelsea Market', cursive;
+    font-size: 30px;
+    /* margin-top: 250px; */
+}
+
+.textoFinal {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 20px;
+    margin-top: 20px;
+
+}
+
+
+
+.btnFinal{
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    margin-top: 100px;
+    width: 200px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgba(212, 212, 212, 0.472);
+    border: solid 1px rgb(42, 42, 42);;
+    width: 150px;
+    font-family: 'Chelsea Market', cursive;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@keyframes bottonVibrate {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.btnFinal:hover {
+    animation: bottonVibrate 0.2s infinite;
+    background-color: rgba(189, 189, 189, 0.472);
+}
+
+
+
+section.mainContainer {
+    height: 100vh;
+}
+
+
+
+
+/* -------------------------------------500px ----------------------------------------
+ESTILOS DE HTLM */
+
+
+
+@media screen and (min-width: 500px) {
+
+.upContainer {
+    display: flex;
+    flex-direction: column;
+    /* border: solid 3px red; */
+    margin: 180px 120px 70px 108px;
+}
+
+
+
+
+.classPregunta {
+
+    margin: 50px;
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-family: 'Chelsea Market', cursive;
+    text-align: center;
+
+
+}
+
+.respuestasLabel {
+    margin: 10px;
+    background-color: rgba(212, 212, 212, 0.472);
+    /* ESTO de abajo */
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 3px;
+    border: solid 1px rgb(42, 42, 42);;
+    font-family: 'Chelsea Market', cursive;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.respuestasInput {
+     display: none; 
+     width: 200px;
+
+}
+
+.respuestasInputCorrecta {
+    margin: 10px;
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgba(0, 128, 0, 0.534);
+    border: solid 1px rgb(42, 42, 42);;
+    font-family: 'Chelsea Market', cursive;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.respuestasInputIncorrecta, .btnFinal{
+    margin: 10px;
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgba(128, 0, 0, 0.534);
+    border: solid 1px rgb(42, 42, 42);;
+    font-family: 'Chelsea Market', cursive;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContainerQuiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    /* margin: 0px 160px 0px 138px; */
+}
+
+
+.puntuacionFinal {
+    font-family: 'Chelsea Market', cursive;
+    font-size: 30px;
+    margin-top: 160px;
+}
+
+.textoFinal {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 20px;
+    margin-top: 20px;
+
+}
+
+
+
+.btnFinal{
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    margin-top: 100px;
+    width: 200px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgba(212, 212, 212, 0.472);
+    border: solid 1px rgb(42, 42, 42);;
+    width: 150px;
+    font-family: 'Chelsea Market', cursive;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.downContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.divContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+
+}
+
+
+
+
+}    
+
+@media screen and (min-width: 700px) {  
+
+   .respuestaLabel, .respuestasInputIncorrecta, .respuestasInputCorrecta, .btnFinal, .respuestasLabel, .respuestasInput, .respuestasInputCorrecta{
+        width: 300px;
+   }  
+   
+   .mainContainerQuiz {
+     height: 100vh;
+
+}
+
+}
+
+
+@media screen and (min-width: 1000px) {  
+
+    .divContainer {
+        margin: 0px 150px 0px 150px;
+}
+
+
+}
+
+
+@media screen and (min-width: 1300px) {  
+
+    .divContainer {
+        margin: 0px 300px 0px 300px;
+}
+}
+
+@media screen and (min-width: 1618px) {  
+
+    .divContainer {
+        margin: 0px 480px 0px 480px;
+}
+}
+
+
