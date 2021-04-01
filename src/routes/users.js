@@ -1,6 +1,6 @@
 const { create, validate } = require('../models/Users')
-const User = require('../models/Users')                              // Hacemos referencia al documento Users que es donde definimos el PoemaSchema
 const server = require('express').Router()
+const User = require('../models/Users')                              // Hacemos referencia al documento Users que es donde definimos el PoemaSchema
 const md5 = require('md5')
 
 // Create dependencies jwt
@@ -9,6 +9,32 @@ const jwt = require('jsonwebtoken')                                             
 
 const randomstring = require('randomstring')
 const secret = randomstring.generate(7)
+
+
+
+
+
+
+
+
+    module.exports = server;
+
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -152,7 +178,6 @@ server.get('/private', (req, res) => {
 
 
 
-module.exports = server;
 
 
 // VALIDACION
@@ -287,3 +312,13 @@ Llegan al serven. Crea un JWT ---->
 VALIDATION
 regexone.com // regexr.com
 */
+
+
+
+
+
+
+
+
+
+

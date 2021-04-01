@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 // create a post method to 
 
-const urlDatabase = 'mongodb://localhost:27017/autentication';      // Nombre de la database. El archivo DB va a ser el punto de conexion con la base de datos.
+const urlDatabase = 'mongodb://localhost:27017/quiz_fullStack';      // Nombre de la database. El archivo DB va a ser el punto de conexion con la base de datos.
 const mongoOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,

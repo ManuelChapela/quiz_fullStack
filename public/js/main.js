@@ -1,34 +1,34 @@
-const questions = [
-    {
-        pregunta: "En que ciudad está prohibido jugar al dominó o a los dados en las terrazas de los bares según Ordenanza", // Contra la contaminación Acústica, Ruidos y Vibraciones
-        respuesta: ["Sevilla", "Algeciras", "Málaga", "Palaciosrrubios"],
-        correcta: 0 
-    },
+// const questions = [
+//     {
+//         pregunta: "En que ciudad está prohibido jugar al dominó o a los dados en las terrazas de los bares según Ordenanza", // Contra la contaminación Acústica, Ruidos y Vibraciones
+//         respuesta: ["Sevilla", "Algeciras", "Málaga", "Palaciosrrubios"],
+//         correcta: 0 
+//     },
 
-    {
-        pregunta: "En Tenerife está prohibido...",
-        respuesta: ["Imitar el Brinco Canario si no eres de origen isleño", "Ponerse monedas en las orejas para pagar", "Hacer fotos al espacio desde la cumbre del Teide", "Hacer castillos de arena en la playa"],
-        correcta: 3
-    },
+//     {
+//         pregunta: "En Tenerife está prohibido...",
+//         respuesta: ["Imitar el Brinco Canario si no eres de origen isleño", "Ponerse monedas en las orejas para pagar", "Hacer fotos al espacio desde la cumbre del Teide", "Hacer castillos de arena en la playa"],
+//         correcta: 3
+//     },
 
-    {
-        pregunta: "En Madrid es necesario pasar un examen exclusivamente para...",
-        respuesta: ["Poder acceder con una caravana o autocaravana a Madrid Central", "Poder ser músico callejero", "Para ser pintor de señalizaciones viales", "Entrar en el carril VAO"],
-        correcta: 1
-    },
+//     {
+//         pregunta: "En Madrid es necesario pasar un examen exclusivamente para...",
+//         respuesta: ["Poder acceder con una caravana o autocaravana a Madrid Central", "Poder ser músico callejero", "Para ser pintor de señalizaciones viales", "Entrar en el carril VAO"],
+//         correcta: 1
+//     },
 
-    {
-        pregunta: "En Eggpaña no puedes ponerle a tu hijo",
-        respuesta: ["Osama Bin Laden o Albert", "Franco, Benito y Adolf", "Judas, Jesucristo o Moisés", "Caín, Judas y Lenin"],
-        correcta: 3
-    },
+//     {
+//         pregunta: "En Eggpaña no puedes ponerle a tu hijo",
+//         respuesta: ["Osama Bin Laden o Albert", "Franco, Benito y Adolf", "Judas, Jesucristo o Moisés", "Caín, Judas y Lenin"],
+//         correcta: 3
+//     },
 
-    {
-        pregunta: "En Eggpaña el Rey es inviolable. Es decir, que si quisiera...",
-        respuesta: ["Podría jugar una partida de dominó en la terraza de un bar de Mojacar", "Mendigar en la Puerta del Sol con un perro", "Poner a su hijo Lenin o a su cuñado Judas.", "Todas las anteriores son correctas"],
-        correcta: 3
-    }
-];
+//     {
+//         pregunta: "En Eggpaña el Rey es inviolable. Es decir, que si quisiera...",
+//         respuesta: ["Podría jugar una partida de dominó en la terraza de un bar de Mojacar", "Mendigar en la Puerta del Sol con un perro", "Poner a su hijo Lenin o a su cuñado Judas.", "Todas las anteriores son correctas"],
+//         correcta: 3
+//     }
+// ];
 
 
 /*
