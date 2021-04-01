@@ -132,11 +132,7 @@ function createAnswer(){
 
     submitBtn.addEventListener("click", () => {
         submitNewAnswer(inputTitle.value, inputAns1.value, inputAns2.value, inputAns3.value, inputAns4.value, Number(selectorAns.value))
-        console.log(inputTitle.value)
-        console.log(inputAns1.value)
-        console.log(inputAns2.value)
-        console.log(inputAns3.value)
-        console.log(inputAns4.value)
+        
     })
     
     
@@ -295,6 +291,8 @@ function editAnswer(elem){
 
     submitBtn.addEventListener("click", () => {
         editDBAnswer(inputTitle.value, inputAns1.value, inputAns2.value, inputAns3.value, inputAns4.value, Number(selectorAns.value), elem._id)
+        
+    let backBtn
     })   
 }
 
@@ -325,3 +323,26 @@ function editDBAnswer(elemTitle, elemAns1, elemAns2, elemAns3, elemAns4, elemSel
     } )
     .catch(err => console.log("Algo está yendo mal...", err)) 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -20,9 +20,9 @@ const inputPass = document.getElementById("inputPass")
 
 
 
-btnContinuar.addEventListener("click", addAnswer);
+btnContinuar.addEventListener("click", logInUser);
 
-function addAnswer(){
+function logInUser(){
     // Petición desde front a back. Back nos devolverá una respuesta. 
     console.log("1", inputMail.value, inputPass.value);
     

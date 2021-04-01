@@ -3,10 +3,8 @@
 const listenPort = 4000;
 const express = require('express');
 const dotenv = require('dotenv').config();
-// const usersRoutes = require('./src/routes/users');                      // ASK ---> los endpoints llevan .js?
 const server = express();
-// const { User } = require('./src/models/Users'); 
-// const { Quest } = require('./src/models/Users'); 
+
 const mongoose = require('mongoose')
 
 
@@ -55,7 +53,6 @@ const questionSchema = new Schema({
         respuesta: {
          type:[String],
          required: true,
-         unique: true
         },
         correcta: {
           type: Number,
@@ -111,7 +108,12 @@ catch {
 
 
 
-//////////////////////////// LEER LAS QUESTIONS DE LA DB ////////////////////////////
+
+
+/////// PRIMERA PARTE EJERCICIO //////
+
+
+//////////////////////////// LEER LAS PREGUNTAS BACKEND ////////////////////////////
 server.get('/readQuestions', (req, res) => {
        
         try{
@@ -228,6 +230,48 @@ server.delete('/deleteQuestion', (req, res) => {
                         }
                 })
         }catch{
+                console.log("Error en la base de datos")
+        }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////// PRIMERA PARTE EJERCICIO //////
+
+
+//////////////////////////// LEER LAS PREGUNTAS BACKEND ////////////////////////////
+server.get('/guestReadQuestions', (req, res) => {
+       
+        try{
+                Quest.find({}, (err, result) => {
+                        if(result == null){
+                                res.status(400).json({
+                                        status: 400,
+                                        ok: false,
+                                        data: "No se ha encontrado ninguna pregunta para mostrar en la base de datos"
+                                })
+                        }else{
+                                res.status(200).json({
+                                        status: 200,
+                                        ok: true,
+                                        results: result
+                                })
+                        }
+                })
+        }
+        catch{
                 console.log("Error en la base de datos")
         }
 })
