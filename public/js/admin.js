@@ -33,6 +33,8 @@ function printQuestions(elem){
 
     questDelete.addEventListener("click", () => {
         deleteAnswer(elem.pregunta)
+
+    
     })
     
     let questUpdate = document.createElement("button");
@@ -58,12 +60,8 @@ function removeBody(){
 }
 
 
-//////////////////////////// LOS 3 EVENTOS DE LA PÁGINA ////////////////////////////
-// btnDelete.addEventListener("click", deleteAnswer)
-// btnUpdate.addEventListener("click", updateAnswer)
+//////////////////////////// CREAR LAS PREGUNTAS FRONT////////////////////////////
 btnCreate.addEventListener("click", createAnswer)
-
-
 
 function createAnswer(){
 
@@ -134,14 +132,18 @@ function createAnswer(){
 
     submitBtn.addEventListener("click", () => {
         submitNewAnswer(inputTitle.value, inputAns1.value, inputAns2.value, inputAns3.value, inputAns4.value, Number(selectorAns.value))
+        console.log(inputTitle.value)
+        console.log(inputAns1.value)
+        console.log(inputAns2.value)
+        console.log(inputAns3.value)
+        console.log(inputAns4.value)
     })
     
     
 }
 
 
-
-//////////////////////////// PINTAR NUEVAS RESPUESTAS ////////////////////////////
+//////////////////////////// PINTAR NUEVAS RESPUESTAS FRONT ////////////////////////////
 function submitNewAnswer(elemTitle, elemAns1, elemAns2, elemAns3, elemAns4, elemSelect){
 
     fetch('/saveQuestions', {
@@ -157,13 +159,14 @@ function submitNewAnswer(elemTitle, elemAns1, elemAns2, elemAns3, elemAns4, elem
     })    
     .then(response => response.json())
     .then(data => {
+        console.log("1", data)
         if(data.status == 400){
             alert(data.data)
-            console.log(data)
         }
         else {
             alert(data.data)
-            window.location.href = "admin.html"
+            window.location.href = data.url
+            console.log(data.url)
         }
     } )
    
@@ -172,14 +175,39 @@ function submitNewAnswer(elemTitle, elemAns1, elemAns2, elemAns3, elemAns4, elem
 
 
 
+
+
+
+
+
+
+
+
+
+//////////////////////////// BORRAR PREGUNTAS ////////////////////////////
+
 function deleteAnswer(pregunta) {
-    fetch('/delete', {
+    fetch('/deleteQuestion', {
         method: 'DELETE',
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({pregunta: pregunta})
     })
+    .then(response => response.json())
+    .then(data => {
+        if(data.status == 400){
+            alert(data.data)
+            console.log("1", data)
+        }
+        else {
+            alert(data.data)
+            console.log("2", data)
+            window.location.href = data.url      //"admin.html"
+        }
+    } )
+   
+    .catch(err => console.log("Algo está yendo mal...", err)) 
 }
 
 
@@ -267,9 +295,7 @@ function editAnswer(elem){
 
     submitBtn.addEventListener("click", () => {
         editDBAnswer(inputTitle.value, inputAns1.value, inputAns2.value, inputAns3.value, inputAns4.value, Number(selectorAns.value), elem._id)
-    })
-    
-    
+    })   
 }
 
 function editDBAnswer(elemTitle, elemAns1, elemAns2, elemAns3, elemAns4, elemSelect, id){
@@ -297,6 +323,5 @@ function editDBAnswer(elemTitle, elemAns1, elemAns2, elemAns3, elemAns4, elemSel
             window.location.href = "admin.html"
         }
     } )
-   
     .catch(err => console.log("Algo está yendo mal...", err)) 
 }

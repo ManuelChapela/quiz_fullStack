@@ -109,6 +109,8 @@ catch {
 }
 })
 
+
+
 //////////////////////////// LEER LAS QUESTIONS DE LA DB ////////////////////////////
 server.get('/readQuestions', (req, res) => {
        
@@ -135,31 +137,30 @@ server.get('/readQuestions', (req, res) => {
 })
 
 
+
+
 //////////////////////////// GUARDAR LAS QUESTIONS EN LA DB ////////////////////////////
 server.post('/saveQuestions', (req, res) => {
-
         const writeAnswers = {
                 pregunta: req.body.pregunta,
                 respuesta: req.body.respuesta,
                 correcta: req.body.correcta
         }
-
-        console.log(writeAnswers)
         try{
                 Quest.create( writeAnswers, (err, result) => {
-                        console.log("1", result)
+                        console.log("2", err);
                         if(err) {
                                 res.status(400).json({
                                         status: 400,
                                         ok: false,
-                                        data: "No se han encontrado preguntas para mostrar"
+                                        data: "Algo va mal, no se puede crear esa pregunta"
                                 })
                         }else{
                                 res.status(200).json({
                                         status:200,
                                         ok: true,
                                         data: "Pregunta guardada",
-                                        url: "/admin"
+                                        url: "admin.html"
                                 })
                         }
                 })
@@ -193,7 +194,9 @@ server.put('/editQuestion', (req, res) => {
                                 res.status(200).json({
                                         status:200,
                                         ok: true,
-                                        data: "Pregunta guardada"
+                                        data: "Pregunta guardada",
+                                        url: "admin.html"
+
                                 })
                         }
                 })
@@ -206,3 +209,25 @@ server.put('/editQuestion', (req, res) => {
 
 //////////////////////////// BORRAR LAS QUESTIONS EN LA DB ////////////////////////////
 
+server.delete('/deleteQuestion', (req, res) => {
+        try{
+                Quest.deleteOne({pregunta: req.body.pregunta}, (err, result) => {
+                        if(err) {
+                                res.status(400).json({
+                                        status: 400,
+                                        ok: false,
+                                        data: "No se han encontrado preguntas para borrar"
+                                })
+                        }else{
+                                res.status(200).json({
+                                        status:200,
+                                        ok: true,
+                                        data: "Pregunta borrada con éxito",
+                                        url: "admin.html"
+                                })
+                        }
+                })
+        }catch{
+                console.log("Error en la base de datos")
+        }
+})
