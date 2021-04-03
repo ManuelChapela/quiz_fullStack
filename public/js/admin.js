@@ -9,7 +9,7 @@ function readQuestions() {
     fetch('/readQuestions')
     .then(response => response.json())
     .then(data => {
-        console.log(data.data);
+        console.log("datiños", data.data);
         data.data.map(elem => printQuestions(elem))
     })
     .catch(err => console.log(err))
@@ -31,11 +31,9 @@ function printQuestions(elem){
     questDelete.setAttribute("class", "btnDom");
     main.appendChild(questDelete)
 
-    questDelete.addEventListener("click", () => {
-        deleteAnswer(elem.pregunta)
-
-    
-    })
+        questDelete.addEventListener("click", () => {
+            deleteAnswer(elem.pregunta)
+        })
     
     let questUpdate = document.createElement("button");
     questUpdate.textContent = "Actualizar";
@@ -43,11 +41,11 @@ function printQuestions(elem){
     questUpdate.setAttribute("class", "btnDom");
     main.appendChild(questUpdate)
    
-    questUpdate.addEventListener("click", () => {
-        editAnswer(elem) 
-    //----> sustituir placeholder por value.preguntas / value.respuestas
-    
-    })
+        questUpdate.addEventListener("click", () => {
+            editAnswer(elem) 
+        //----> sustituir placeholder por value.preguntas / value.respuestas
+        
+        })
 }
 
 readQuestions() // INVOCAMOS DIRECTAMENTE AL ABRIR EL DOCUMENTO

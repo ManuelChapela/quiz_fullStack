@@ -84,6 +84,7 @@ server.post('/login', (req, res)=>{
         }
         try {
                 User.findOne(USER, (err, result)=>{   // Nos busca el campo { email } y se introducen los cambios como un objeto {token, private: secret}
+               console.log(result)
                 if (result == null) {
                         res.status(400).json({
                                 status:400,

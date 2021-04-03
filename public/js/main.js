@@ -61,13 +61,13 @@ En España el Rey es inviolable. Es decir, que si quisiera...
  const image = document.getElementById("imageQuiz");
 
 
-let crearDivContenedor = document.createElement("div");
-    crearDivContenedor.setAttribute("class", "divContainer");
-    crearDivContenedor.setAttribute("id", "divContainer");
-    form.appendChild(crearDivContenedor);
+// let crearDivContenedor = document.createElement("div");
+//     crearDivContenedor.setAttribute("class", "divContainer");
+//     crearDivContenedor.setAttribute("id", "divContainer");
+//     form.appendChild(crearDivContenedor);
 
 
-const div = document.getElementById("divContainer")
+// const div = document.getElementById("divContainer")
 
 
 

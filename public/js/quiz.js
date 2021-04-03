@@ -1,145 +1,106 @@
-// const questions = [
-//     {
-//         pregunta: "En que ciudad está prohibido jugar al dominó o a los dados en las terrazas de los bares según Ordenanza", // Contra la contaminación Acústica, Ruidos y Vibraciones
-//         respuesta: ["Sevilla", "Algeciras", "Málaga", "Palaciosrrubios"],
-//         correcta: 0 
-//     },
 
-//     {
-//         pregunta: "En Tenerife está prohibido...",
-//         respuesta: ["Imitar el Brinco Canario si no eres de origen isleño", "Ponerse monedas en las orejas para pagar", "Hacer fotos al espacio desde la cumbre del Teide", "Hacer castillos de arena en la playa"],
-//         correcta: 3
-//     },
-
-//     {
-//         pregunta: "En Madrid es necesario pasar un examen exclusivamente para...",
-//         respuesta: ["Poder acceder con una caravana o autocaravana a Madrid Central", "Poder ser músico callejero", "Para ser pintor de señalizaciones viales", "Entrar en el carril VAO"],
-//         correcta: 1
-//     },
-
-//     {
-//         pregunta: "En Eggpaña no puedes ponerle a tu hijo",
-//         respuesta: ["Osama Bin Laden o Albert", "Franco, Benito y Adolf", "Judas, Jesucristo o Moisés", "Caín, Judas y Lenin"],
-//         correcta: 3
-//     },
-
-//     {
-//         pregunta: "En Eggpaña el Rey es inviolable. Es decir, que si quisiera...",
-//         respuesta: ["Podría jugar una partida de dominó en la terraza de un bar de Mojacar", "Mendigar en la Puerta del Sol con un perro", "Poner a su hijo Lenin o a su cuñado Judas.", "Todas las anteriores son correctas"],
-//         correcta: 3
-//     }
-// ];
-
-
-/*
-Leyes absurdas marca Eggpaña:
-
-En España el Rey es inviolable. Es decir, que si quisiera...  
-    - podría incluso jugar una partida de dominó en la terraza de un bar de Mojacar
-    - mendigar en la Puerta del Sol con un perro
-    - poner a su hijo Lenin o a su cuñado Judas.
-    - Todas las anteriores son correctas 
-
-    En un juicio sobre desahucios en España, si pierde el desahuciado...
-    - no puede recurrir
-    - Puede recurrir
-    - No puede recurrir pero si pierde el banco, este si puede 
-
-    En España no puedes ponerle a tu hijo 
-        - Osama Bin Laden o Albert.
-        - Franco, Benito y Adolf.
-        - Judas, Jesucristo o Moisés 
-        - Caín, Judas y Lenin.
-
-  */  
-
-
-
-
-
-
-
-
-
-
-/////// PRIMERA PARTE EJERCICIO //////
-
-
-//////////////////////////// LEER LAS PREGUNTAS PARA PODER HACER EL QUIZ POR ORDEN ////////////////////////////
-function readQuestions() {
-    fetch('/guestReadQuestions')
-        .then(response => response.json())
-        .then(data => {
-            console.log("losDatos", data.results);
-            data.results.map(elem => imprimePregunta(elem))
-        })
-        
-        .catch(err => console.log(err))
-}
-
-readQuestions()
-
-function removeBody(){
-    document.querySelector("main").querySelectorAll("*").forEach(elem => elem.remove())
-}
-
- const form = document.getElementById("formContainer");
- const container = document.getElementById("mainContainerQuiz");
- const image = document.getElementById("imageQuiz");
-
-let crearDivContenedor = document.createElement("div");
-    crearDivContenedor.setAttribute("class", "divContainer");
-    crearDivContenedor.setAttribute("id", "divContainer");
-    form.appendChild(crearDivContenedor);
-
+/////// PRIMERA PARTE EJERCICIO \\\\\\\
+/////////////////// CONST DE HTML ///////////////////
+const form = document.getElementById("formContainer");
+const container = document.getElementById("mainContainerQuiz");
+const image = document.getElementById("imageQuiz");
 const div = document.getElementById("divContainer")
 
+/////////////////// VARIABLES ///////////////////
+let counter = 0;
+let j = 0;
 
-function imprimePregunta(elem) {
-    
-    console.log("un solo elem", elem)
-    
-    let i = 1;
-    
-    let createAsnwer1 = document.createElement("button")
-    createAsnwer1.setAttribute("class", "respuestasLabel") 
-    createAsnwer1.textContent = elem.respuesta[0]
-    // console.log("laPregunta", elem.pregunta.slice())
-    form.appendChild(createAsnwer1);
-    
-    let createAsnwer2 = document.createElement("button")
-    createAsnwer2.setAttribute("class", "respuestasLabel") 
-    createAsnwer2.textContent = elem.respuesta[1]
-    // console.log("laPregunta", elem.pregunta.slice())
-    form.appendChild(createAsnwer2);
-    
-    let createAsnwer3 = document.createElement("button")
-    createAsnwer3.setAttribute("class", "respuestasLabel") 
-    createAsnwer3.textContent = elem.respuesta[2]
-    // console.log("laPregunta", elem.pregunta.slice())
-    form.appendChild(createAsnwer3);
-    
-    let createAsnwer4 = document.createElement("button")
-    createAsnwer4.setAttribute("class", "respuestasLabel") 
-    createAsnwer4.textContent = elem.respuesta[3]
-    // console.log("laPregunta", elem.pregunta.slice())
-    form.appendChild(createAsnwer4);
-    
+/////////////////// FUNCIÓN BORRADORA ///////////////////
+function removeBody(){
+    document.getElementById("formContainer").querySelectorAll("*").forEach(elem => elem.remove())
+}
+
+/////////////////// LEER LAS PREGUNTAS PARA PODER HACER EL QUIZ POR ORDEN /////////////////// 
+function readQuestions() {
+    fetch('/guestReadQuestions')
+    .then(response => response.json())
+    .then(data => {
+        imprimePregunta(data.results)
+    })
+    .catch(err => console.log(err))
+}
+function imprimePregunta(elemAll) { 
     // PREGUNTA
+    if( j < elemAll.length) {
+
     let crearPregunta = document.createElement("p")
     crearPregunta.setAttribute("class", "classPregunta")  
-    crearPregunta.textContent = elem.pregunta.slice();
-    console.log("laPregunta", elem.pregunta.slice())
+    crearPregunta.textContent = elemAll[j].pregunta;
     form.appendChild(crearPregunta);
     
-    document.querySelectorAll("button").addEventListener("click", () => {
+    // RESPUESTAS [j]
+    for(let i = 0; i < elemAll[j].respuesta.length; i++) {
+        let answerCreation = document.createElement("button")
+        answerCreation.setAttribute("class", "respuestasLabel") 
+        answerCreation.setAttribute("value", i) 
+        answerCreation.textContent = elemAll[j].respuesta[i]
+        form.appendChild(answerCreation);
+
+            answerCreation.addEventListener("click", () => {
+            
+                if(elemAll[j].correcta == i) {
+                console.log("Respuesta correcta")
+                answerCreation.classList.remove("respuestasLabel")
+                answerCreation.classList.add("respuestasInputCorrecta")
+                counter++
+                j++
+                removeBody()
+                readQuestions()
+
+                }else{
+                console.log("Respuesta incorrecta")
+                answerCreation.classList.remove("respuestasLabel")
+                answerCreation.classList.add("respuestasInputIncorrecta")
+                j++
+                removeBody()
+                readQuestions()
+                }
+            
+        })
+        }   
+    }else{
         removeBody()
-        i++
-        imprimePregunta(elem)
-    })
-    
-    
-}
+        sawResults(elemAll, counter)
+        console.log("Se acabó el quizzzzz")
+    }
+    }
+
+    function sawResults(elementosTotales , counter){
+        
+        let score = document.createElement("p")
+        score.textContent = "Has acabado el quiz, ¡Enhorabuena!"
+        score.setAttribute("class", "classPregunta")    // CAMBIAR CLASE AQUÍ // TODO
+        form.appendChild(score);
+
+        let yourScore = document.createElement("p")
+        yourScore.textContent = counter + " / " + elementosTotales.length;
+        yourScore.setAttribute("class", "classPregunta")    // CAMBIAR CLASE AQUÍ // TODO
+        form.appendChild(yourScore)
+
+        let reInitiate = document.createElement("button");
+        reInitiate.textContent = "Reiniciar el quiz"
+        reInitiate.setAttribute("class", "respuestasLabel") 
+        reInitiate.setAttribute("href", "quiz.html")
+        form.appendChild(reInitiate)
+
+        let bye = document.createElement("a");
+        bye.textContent = "Volver a pantalla inicial"
+        bye.setAttribute("class", "respuestasLabel") 
+        bye.setAttribute("href", "index.html")
+        bye.setAttribute("type", "button")
+        form.appendChild(bye)
+    }
+
+
+
+
+    readQuestions()
+
 
 
 
