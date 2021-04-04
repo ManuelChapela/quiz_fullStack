@@ -74,37 +74,55 @@ const User = mongoose.model('user', userSchema, 'user');
 const Quest = mongoose.model('questions', questionSchema, 'questions');
 
 
-
+//////////////////////////// VALIDAR MAIL Y CONTRASEÑA ////////////////////////////
+function validateEmailPass(email, pass) {
+        let patternEmail =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        let patternPass = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+                console.log(patternEmail.test(email)&&patternPass.test(pass))
+        return patternEmail.test(email)&&patternPass.test(pass);  
+     }
 
 //////////////////////////// HACER LOG IN ////////////////////////////
 server.post('/login', (req, res)=>{
         const USER = {
-                user : req.body.email,
+                user: req.body.email,
                 password: req.body.password
         }
         try {
+        if(validateEmailPass(req.body.email, req.body.password)){
+               
                 User.findOne(USER, (err, result)=>{   // Nos busca el campo { email } y se introducen los cambios como un objeto {token, private: secret}
-               console.log(result)
-                if (result == null) {
-                        res.status(400).json({
-                                status:400,
-                                data: "No match",
-                                ok: false
-                        })
-                }
-                else {
-                        res.status(200).json({
-                                status:200,
-                                data: result,
-                                alert: "Login correctly",
-                                ok: true
-                        })
-                }
+                        
+                                if (result == null) {
+                                        res.status(400).json({
+                                                status:400,
+                                                data: "Su email o contraseña no coinciden con el de nuestra base de datos",
+                                                ok: false
+                                        })
+                                }
+                                else {
+                                        res.status(200).json({
+                                                status:200,
+                                                data: result,
+                                                alert: "Login correctly",
+                                                ok: true,
+                                                url: "admin.html"
+                                        })
+                                }
         })
-}
-catch {
-        console.log("Error con la base de datos");
-}
+
+        }else{
+                res.status(500).json({
+                        alert: "No has introducido una contraseña o un email válido, vuelve a intentarlo",
+                        status: 500,
+                        ok: false,
+                        url: "login.html"
+                })
+        }
+}catch {
+                console.log("Error con la base de datos");
+        }
+
 })
 
 

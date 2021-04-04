@@ -24,6 +24,7 @@ function readQuestions() {
     })
     .catch(err => console.log(err))
 }
+
 function imprimePregunta(elemAll) { 
     // PREGUNTA
     if( j < elemAll.length) {
@@ -65,12 +66,13 @@ function imprimePregunta(elemAll) {
         }   
     }else{
         removeBody()
-        sawResults(elemAll, counter)
+        sawResults(elemAll.length, counter)
+        
         console.log("Se acabó el quizzzzz")
     }
     }
 
-    function sawResults(elementosTotales , counter){
+    function sawResults(allElemLength , counter){
         
         let score = document.createElement("p")
         score.textContent = "Has acabado el quiz, ¡Enhorabuena!"
@@ -78,7 +80,7 @@ function imprimePregunta(elemAll) {
         form.appendChild(score);
 
         let yourScore = document.createElement("p")
-        yourScore.textContent = counter + " / " + elementosTotales.length;
+        yourScore.textContent = counter + " / " + allElemLength;
         yourScore.setAttribute("class", "classPregunta")    // CAMBIAR CLASE AQUÍ // TODO
         form.appendChild(yourScore)
 
@@ -95,9 +97,6 @@ function imprimePregunta(elemAll) {
         bye.setAttribute("type", "button")
         form.appendChild(bye)
     }
-
-
-
 
     readQuestions()
 

@@ -41,9 +41,14 @@ function logInUser(){
         if(data.status == 400){
             alert(data.data)
         }
+        else if (data.status == 200) {
+            alert(data.alert)
+            window.location.href = data.url
+        }
         else {
             alert(data.alert)
-            window.location.href = "admin.html"
+            window.location.href = data.url
+
         }
     } )
    

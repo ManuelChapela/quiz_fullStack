@@ -22,13 +22,13 @@ function printQuestions(elem){
     let questTitle = document.createElement("h2");
     questTitle.textContent = elem.pregunta;
     questTitle.setAttribute("id", "questTitle");
-    questTitle.setAttribute("class", "questTitle");
+    questTitle.setAttribute("class", "logText");
     main.appendChild(questTitle);
 
     let questDelete = document.createElement("button");
     questDelete.textContent = "Eliminar";
     questDelete.setAttribute("type", "button");
-    questDelete.setAttribute("class", "btnDom");
+    questDelete.setAttribute("class", "logContainer");
     main.appendChild(questDelete)
 
         questDelete.addEventListener("click", () => {
@@ -38,7 +38,7 @@ function printQuestions(elem){
     let questUpdate = document.createElement("button");
     questUpdate.textContent = "Actualizar";
     questUpdate.setAttribute("type", "button");
-    questUpdate.setAttribute("class", "btnDom");
+    questUpdate.setAttribute("class", "logContainer");
     main.appendChild(questUpdate)
    
         questUpdate.addEventListener("click", () => {
@@ -62,34 +62,34 @@ function removeBody(){
 btnCreate.addEventListener("click", createAnswer)
 
 function createAnswer(){
-
+    
     removeBody()
 
     // Título
     let inputTitle = document.createElement("input");
     inputTitle.setAttribute("placeholder", "Inserta aquí un título");
-    inputTitle.setAttribute("class", "inputTitle");
+    inputTitle.setAttribute("class", "inputsEntradaLog");
     main.appendChild(inputTitle);
 
     // Respuestas
     let inputAns1 = document.createElement("input");
     inputAns1.setAttribute("placeholder", "Inserta aquí tu primera respuesta");
-    inputAns1.setAttribute("class", "inputAns");
+    inputAns1.setAttribute("class", "inputsEntradaLog");
     main.appendChild(inputAns1);
 
     let inputAns2 = document.createElement("input");
     inputAns2.setAttribute("placeholder", "Inserta aquí tu segunda respuesta");
-    inputAns2.setAttribute("class", "inputAns");
+    inputAns2.setAttribute("class", "inputsEntradaLog");
     main.appendChild(inputAns2);
 
     let inputAns3 = document.createElement("input");
     inputAns3.setAttribute("placeholder", "Inserta aquí tu tercera respuesta");
-    inputAns3.setAttribute("class", "inputAns");
+    inputAns3.setAttribute("class", "inputsEntradaLog");
     main.appendChild(inputAns3);
 
     let inputAns4 = document.createElement("input");
     inputAns4.setAttribute("placeholder", "Inserta aquí tu cuarta respuesta");
-    inputAns4.setAttribute("class", "inputAns");
+    inputAns4.setAttribute("class", "inputsEntradaLog");
     main.appendChild(inputAns4);
 
     // Selector
@@ -126,12 +126,24 @@ function createAnswer(){
     let submitBtn = document.createElement("button");
     submitBtn.textContent = "Enviar pregunta";
     submitBtn.setAttribute("id", "submitBtn");
+    submitBtn.setAttribute("class", "logContainer");
     main.appendChild(submitBtn);
 
+    
+    let backBtn = document.createElement("button");
+    backBtn.textContent = "Volver atrás";
+    backBtn.setAttribute("id", "backBtn");
+    backBtn.setAttribute("class", "logContainer");
+    main.appendChild(backBtn);
+    
     submitBtn.addEventListener("click", () => {
         submitNewAnswer(inputTitle.value, inputAns1.value, inputAns2.value, inputAns3.value, inputAns4.value, Number(selectorAns.value))
-        
     })
+
+    backBtn.addEventListener("click", () =>{
+    removeBody();
+    readQuestions()
+})
     
     
 }
@@ -227,32 +239,33 @@ function editAnswer(elem){
     // Título
     let inputTitle = document.createElement("input");
     inputTitle.setAttribute("value", elem.pregunta);
-    inputTitle.setAttribute("class", "inputTitle");
+    inputTitle.setAttribute("class", "inputsEntradaLog");
     main.appendChild(inputTitle);
 
     // Respuestas
     let inputAns1 = document.createElement("input");
     inputAns1.setAttribute("value", elem.respuesta[0]);
-    inputAns1.setAttribute("class", "inputAns");
+    inputAns1.setAttribute("class", "inputsEntradaLog");
     main.appendChild(inputAns1);
 
     let inputAns2 = document.createElement("input");
     inputAns2.setAttribute("value", elem.respuesta[1]);
-    inputAns2.setAttribute("class", "inputAns");
+    inputAns2.setAttribute("class", "inputsEntradaLog");
     main.appendChild(inputAns2);
 
     let inputAns3 = document.createElement("input");
     inputAns3.setAttribute("value", elem.respuesta[2]);
-    inputAns3.setAttribute("class", "inputAns");
+    inputAns3.setAttribute("class", "inputsEntradaLog");
     main.appendChild(inputAns3);
 
     let inputAns4 = document.createElement("input");
     inputAns4.setAttribute("value", elem.respuesta[3]);
-    inputAns4.setAttribute("class", "inputAns");
+    inputAns4.setAttribute("class", "inputsEntradaLog");
     main.appendChild(inputAns4);
 
     // Selector
     let selectorAns = document.createElement("select");
+    selectorAns.setAttribute("id", "select");
     selectorAns.setAttribute("id", "select");
     main.appendChild(selectorAns);
 
@@ -285,13 +298,25 @@ function editAnswer(elem){
     let submitBtn = document.createElement("button");
     submitBtn.textContent = "Enviar pregunta";
     submitBtn.setAttribute("id", "submitBtn");
+    submitBtn.setAttribute("class", "logContainer");
     main.appendChild(submitBtn);
 
+    
+    let backBtn2 = document.createElement("button");
+    backBtn2.textContent = "Volver atrás";
+    backBtn2.setAttribute("id", "backBtn");
+    backBtn2.setAttribute("class", "logContainer");
+    main.appendChild(backBtn2);
+    
     submitBtn.addEventListener("click", () => {
-        editDBAnswer(inputTitle.value, inputAns1.value, inputAns2.value, inputAns3.value, inputAns4.value, Number(selectorAns.value), elem._id)
-        
-    let backBtn
+    editDBAnswer(inputTitle.value, inputAns1.value, inputAns2.value, inputAns3.value, inputAns4.value, Number(selectorAns.value), elem._id)
     })   
+        
+    backBtn2.addEventListener("click", () => { 
+        removeBody();
+        readQuestions()
+    })
+
 }
 
 function editDBAnswer(elemTitle, elemAns1, elemAns2, elemAns3, elemAns4, elemSelect, id){
