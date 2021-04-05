@@ -33,7 +33,7 @@ function logInUser(){
             password: inputPass.value
         }),
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json'   // `Bearer:${sessionStorage.getItem('token')}`
         }
     })
     .then(response => response.json())
@@ -44,11 +44,15 @@ function logInUser(){
         else if (data.status == 200) {
             alert(data.alert)
             window.location.href = data.url
+            localStorage.setItem('token', data.token) // Añado el token con (KEY,VALUE)
         }
-        else {
+        else if(data.status == 401){
             alert(data.alert)
             window.location.href = data.url
-
+        }
+        else if(data.status == 402){
+            alert(data.alert)
+            window.location.href = data.url
         }
     } )
    

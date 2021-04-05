@@ -8,16 +8,29 @@ const btnCreate = document.getElementById("btnCreate")
 function readQuestions() {
     fetch('/readQuestions')
     .then(response => response.json())
-    .then(data => {
-        console.log("datiños", data.data);
-        data.data.map(elem => printQuestions(elem))
-    })
+    .then(data => printQuestionsLogOut(data.data))
     .catch(err => console.log(err))
 }
 
+//////////////////////////// DOM PARA PINTAR BTN LOGOUT  +  INVOCAR LOG OUT  +  LEER AUTOMATICAMENTE PREGUNTAS ////////////////////////////
+function printQuestionsLogOut(elem) {
+let logOutBtn = document.createElement("button");
+    logOutBtn.textContent = "LogOut";
+    logOutBtn.setAttribute("id", "logOutBtn");
+    logOutBtn.setAttribute("class", "logContainer");
+    main.appendChild(logOutBtn);
+    
+    elem.map(elem => printQuestions(elem))
+
+    logOutBtn.addEventListener("click", () => {
+        console.log("Has hecho logOut")
+        logOutUser()
+    })
+}
 
 //////////////////////////// DOM PARA PINTAR PREGUNTAS + BTN (DELETE / UPDATE) ////////////////////////////
 function printQuestions(elem){
+
 
     let questTitle = document.createElement("h2");
     questTitle.textContent = elem.pregunta;
@@ -42,9 +55,7 @@ function printQuestions(elem){
     main.appendChild(questUpdate)
    
         questUpdate.addEventListener("click", () => {
-            editAnswer(elem) 
-        //----> sustituir placeholder por value.preguntas / value.respuestas
-        
+            editAnswer(elem)         
         })
 }
 
@@ -61,9 +72,11 @@ function removeBody(){
 //////////////////////////// CREAR LAS PREGUNTAS FRONT////////////////////////////
 btnCreate.addEventListener("click", createAnswer)
 
+
 function createAnswer(){
     
     removeBody()
+    
 
     // Título
     let inputTitle = document.createElement("input");
@@ -352,6 +365,42 @@ function editDBAnswer(elemTitle, elemAns1, elemAns2, elemAns3, elemAns4, elemSel
 
 
 
+//////////////////////////// LOG OUT FUNCTION [UNDERCONSTRUCTION] [primera parte hecha, comprobarlo] ////////////////////////////
+
+
+function logOutUser(){
+    
+    fetch('/logout', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': `Bearer:${localStorage.getItem('token')}`
+        }})
+        .then(response => response.json())
+        .then(data => {
+            if (data.status == 200){
+                alert(data.data)
+                localStorage.removeItem('token') // Se pasa la clave
+                setTimeout(window.location.href = data.url, 1500)
+            }
+            else if (data.status == 400){
+                alert(data.data)
+                setTimeout(window.location.href = data.url, 1500)
+            }
+            else if (data.status == 401){
+                console.log(data);
+                alert(data.data)
+                setTimeout(window.location.href = data.url, 1500)
+            }
+            // if (data.status == 401){
+            //     alert(data.data)
+            //     setTimeout(window.location.href = data.url, 1500)
+            // }
+            // if (data.status == 500){
+            //     alert(data.data)
+            // }
+        })
+        .catch(err => console.log("Se ha producido un error, vuelta a intentarlo más tarde", err))
+    }
 
 
 
